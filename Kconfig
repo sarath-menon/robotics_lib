@@ -1,0 +1,9 @@
+menuconfig ENABLE_ROBOTICS_LIB
+	bool "Include robotics_lib"
+    default y
+	help
+	  Enables robotics_lib libraty that provies several utilities for robotics
+
+if ENABLE_ROBOTICS_LIB
+	source "$(ZEPHYR_ROBOTICS_LIB_MODULE_DIR)/src/communication/Kconfig"
+endif # ENABLE_ROBOTICS_LIB

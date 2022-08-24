@@ -2,8 +2,7 @@
 cmake_minimum_required(VERSION 3.20.0)
 project(robotics_lib)
 
-if(CONFIG_HELLO_WORLD_DRIVER)
-message(".......Robotics lib enabled.......")
+
 
 set(LIB_NAME robotics_lib)
 
@@ -14,17 +13,19 @@ math
 rl_common
 communication
 testing
-# kconfiglib_cmake
 )
 
 ####### Do not modify !
+
+if(CONFIG_ENABLE_ROBOTICS_LIB)
+message(".......Robotics lib enabled.......")
 
 add_library(${LIB_NAME} INTERFACE)
 
 target_link_libraries(${LIB_NAME} INTERFACE ${SUB_LIBS})
 
 foreach(LIB ${SUB_LIBS})
-    add_subdirectory(${LIB})
+    add_subdirectory(src/${LIB})
 endforeach()
 
 endif()
