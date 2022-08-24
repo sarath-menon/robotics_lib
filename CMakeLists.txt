@@ -1,4 +1,7 @@
 # Template for pure interface library
+cmake_minimum_required(VERSION 3.20.0)
+project(robotics_lib)
+
 
 set(LIB_NAME robotics_lib)
 
@@ -9,6 +12,7 @@ math
 rl_common
 communication
 testing
+# kconfiglib_cmake
 )
 
 ####### Do not modify !
