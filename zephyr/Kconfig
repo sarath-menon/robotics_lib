@@ -1,0 +1,5 @@
+config HELLO_WORLD_DRIVER
+	bool "Support for the demonstration out of tree driver"
+    default n
+	help
+	  Enables hello world driver

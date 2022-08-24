@@ -2,6 +2,8 @@
 cmake_minimum_required(VERSION 3.20.0)
 project(robotics_lib)
 
+if(CONFIG_HELLO_WORLD_DRIVER)
+message(".......Robotics lib enabled.......")
 
 set(LIB_NAME robotics_lib)
 
@@ -25,4 +27,5 @@ foreach(LIB ${SUB_LIBS})
     add_subdirectory(${LIB})
 endforeach()
 
+endif()
 
