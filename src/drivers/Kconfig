@@ -1,0 +1,3 @@
+source "$(LIB_PATH)/src/drivers/sensors/Kconfig"
+# source "$(LIB_PATH)/src/drivers/actuators/Kconfig"
+source "$(LIB_PATH)/src/drivers/io_devices/Kconfig"

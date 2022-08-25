@@ -1,0 +1,5 @@
+config RL_IO_DEVICES_BUTTON
+	bool "enable button i/o driver"
+    default y
+	help
+	  Enables button i/o driver from robotics_lib

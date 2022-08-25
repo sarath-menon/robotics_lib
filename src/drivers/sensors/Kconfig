@@ -1,0 +1,9 @@
+menuconfig RL_SENSORS
+	bool "enable sensor drivers"
+    default y
+	help
+	  Enables sensor drivers from robotics_lib
+
+if RL_SENSORS
+	source "$(LIB_PATH)/src/drivers/sensors/imu/Kconfig"
+endif # RL_SENSORS

@@ -1,0 +1,10 @@
+menuconfig RL_IO_DEVICES
+	bool "enable i/o device drivers"
+    default y
+	help
+	  Enables i/o device drivers from robotics_lib
+
+if RL_IO_DEVICES
+	source "$(LIB_PATH)/src/drivers/io_devices/button/Kconfig"
+	source "$(LIB_PATH)/src/drivers/io_devices/led/Kconfig"
+endif # RL_SENSORS

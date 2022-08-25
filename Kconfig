@@ -1,9 +1,13 @@
+#shorter path name
+LIB_PATH=$(ZEPHYR_ROBOTICS_LIB_MODULE_DIR)
+
 menuconfig ENABLE_ROBOTICS_LIB
 	bool "Include robotics_lib"
-    default y
+    default n
 	help
 	  Enables robotics_lib libraty that provies several utilities for robotics
 
 if ENABLE_ROBOTICS_LIB
-	source "$(ZEPHYR_ROBOTICS_LIB_MODULE_DIR)/src/communication/Kconfig"
+	source "$(LIB_PATH)/src/communication/Kconfig"
+	source "$(LIB_PATH)/src/drivers/Kconfig"
 endif # ENABLE_ROBOTICS_LIB

@@ -1,0 +1,9 @@
+menuconfig RL_SENSORS_IMU
+	bool "enable imu sensor drivers"
+    default y
+	help
+	  Enables imu sensor drivers from robotics_lib
+
+if RL_SENSORS_IMU
+	source "$(LIB_PATH)/src/drivers/sensors/imu/bmi088/Kconfig"
+endif # RL_SENSORS

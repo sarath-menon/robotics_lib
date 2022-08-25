@@ -1,0 +1,5 @@
+config RL_IO_DEVICES_LED
+	bool "enable led i/o driver"
+    default y
+	help
+	  Enables led i/o driver from robotics_lib
