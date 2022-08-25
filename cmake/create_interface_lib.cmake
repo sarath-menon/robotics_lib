@@ -1,20 +1,22 @@
 
-# # to create an interface library in cmake
-
+# create an interface library 
 function(create_interface_lib LIB_NAME)
 
     add_library(${LIB_NAME} INTERFACE)
 
 endfunction(create_interface_lib)
 
+
+# add sub library to specified interface library 
 function(add_interface_sublib LIB SUB_LIB)
 
     target_link_libraries(${LIB} INTERFACE ${SUB_LIB})
     add_subdirectory(${SUB_LIB})
 
-    message("added sublib: " ${SUB_LIB})
 endfunction(add_interface_sublib)
 
+
+# add sub library to specified interface library if given config is defined
 function(add_interface_sublib_ifdef LIB SUB_LIB CONFIG_NAME)
 
     if(CONFIG_${CONFIG_NAME})
@@ -22,7 +24,7 @@ function(add_interface_sublib_ifdef LIB SUB_LIB CONFIG_NAME)
     target_link_libraries(${LIB} INTERFACE ${SUB_LIB})
     add_subdirectory(${SUB_LIB})
 
-    message("added sublib: " ${SUB_LIB} " config: " ${CONFIG_NAME} )
+    # message("added sublib: " ${SUB_LIB} " config: " ${CONFIG_NAME} )
     endif()
 
 endfunction(add_interface_sublib_ifdef)
