@@ -1,24 +1,10 @@
-# Template for pure interface library
 
-set(LIB_NAME drivers)
-
-# list of libs to combine as one interface lib
-set(SUB_LIBS 
-actuators
-interfaces
-io_devices
-logger
-sensors
-)
-
-####### Do not modify !
-
-add_library(${LIB_NAME} INTERFACE)
-
-target_link_libraries(${LIB_NAME} INTERFACE ${SUB_LIBS})
-
-foreach(LIB ${SUB_LIBS})
-    add_subdirectory(${LIB})
-endforeach()
-
-
+create_interface_lib(NAME drivers
+                    CONFIG RL_COMMUNICATION
+                    LIBS 
+                        actuators
+                        interfaces
+                        io_devices
+                        logger
+                        sensors
+                    )
