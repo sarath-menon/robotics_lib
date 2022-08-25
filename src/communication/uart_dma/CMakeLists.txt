@@ -1,6 +1,4 @@
 create_static_lib(NAME uart_dma
-                    CONFIG 
-                            ENABLE_ROBOTICS_LIB
                     CPP_FILES
                             src/uart_dma.cpp
                     INCLUDE_DIRS

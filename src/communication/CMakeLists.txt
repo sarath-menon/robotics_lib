@@ -1,6 +1,7 @@
-create_interface_lib(NAME communication
-                    CONFIG RL_COMMUNICATION
-                    LIBS 
-                        usb_console
-                        uart_dma
-                    )
+
+create_interface_lib(communication)
+
+add_interface_sublib_ifdef(communication usb_console RL_COMMUNICATION_USB_CONSOLE)
+add_interface_sublib_ifdef(communication uart_dma RL_COMMUNICATION_UART_DMA)
+
+

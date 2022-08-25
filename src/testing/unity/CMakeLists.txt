@@ -1,6 +1,4 @@
 create_static_lib(NAME unity
-                    CONFIG 
-                            ENABLE_ROBOTICS_LIB
                     CPP_FILES
                             src/unity.c
                     INCLUDE_DIRS

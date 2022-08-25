@@ -1,6 +1,4 @@
 create_static_lib(NAME bmi088
-                    CONFIG 
-                            RL_SENSORS_IMU_BMI088
                     CPP_FILES
                             src/bmi088.cpp
                             src/bmi088_acc.cpp

@@ -1,7 +1,5 @@
 
-create_interface_lib(NAME motors
-                    CONFIG RL_ACTUATORS_MOTORS
-                    LIBS 
-                        coreless_motor
-                    )
+create_interface_lib(motors)
+
+add_interface_sublib_ifdef(motors coreless_motor RL_ACTUATORS_MOTOR_CORELESS)
 

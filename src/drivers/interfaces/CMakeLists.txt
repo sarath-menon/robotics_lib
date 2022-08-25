@@ -1,7 +1,5 @@
 
-create_interface_lib(NAME interfaces
-                    CONFIG RL_COMMUNICATION
-                    LIBS 
-                        peripherals
-                    )
 
+create_interface_lib(interfaces)
+
+add_interface_sublib(interfaces peripherals)

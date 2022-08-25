@@ -1,8 +1,6 @@
 
-create_interface_lib(NAME actuators
-                    CONFIG RL_ACTUATORS
-                    LIBS 
-                        motors
-                    )
+create_interface_lib(actuators)
 
+add_interface_sublib_ifdef(actuators motors RL_ACTUATORS)
+                    
 

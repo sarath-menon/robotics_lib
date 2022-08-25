@@ -1,7 +1,5 @@
 
 create_static_lib(NAME usb_console
-                    CONFIG 
-                            ENABLE_ROBOTICS_LIB
                     CPP_FILES
                             src/usb_console.cpp
                     INCLUDE_DIRS

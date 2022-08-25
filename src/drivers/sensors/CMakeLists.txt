@@ -1,5 +1,4 @@
-create_interface_lib(NAME sensors
-                    CONFIG RL_SENSORS
-                    LIBS 
-                        imu
-                    )
+
+create_interface_lib(sensors)
+
+add_interface_sublib_ifdef(sensors imu RL_SENSORS_IMU)                    

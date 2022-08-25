@@ -1,6 +1,6 @@
 
-create_interface_lib(NAME testing
-                    CONFIG RL_TESTING
-                    LIBS 
-                        unity
-                    )
+
+create_interface_lib(testing)
+
+add_interface_sublib_ifdef(actuators unity RL_TESTING)
+
