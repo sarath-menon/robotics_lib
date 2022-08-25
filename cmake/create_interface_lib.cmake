@@ -1,3 +1,5 @@
+# to create an interface library in cmake
+
 function(create_interface_lib)
 
     # ----------------------------------------------------------

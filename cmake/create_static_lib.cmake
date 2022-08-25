@@ -1,3 +1,5 @@
+# to create a static library in cmake
+
 function(create_static_lib)
 
     # ----------------------------------------------------------
