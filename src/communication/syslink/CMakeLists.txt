@@ -1,28 +1,14 @@
-set(MODULE_NAME syslink)
-
-
-# list of c++ source files
-set(CPP_FILES
-src/${MODULE_NAME}.cpp
-)
-
-# list of library dependendcies
-set(PUBLIC_LIB_DEP
-)
-
-set(PRIVATE_LIB_DEP
-zephyr
-zephyr_interface
-uart_dma
-)
-
-####### Do not modify !
-
-add_library(${MODULE_NAME} STATIC ${CPP_FILES})
-
-target_include_directories(${MODULE_NAME} PUBLIC include)
-
-target_link_libraries(${MODULE_NAME} PUBLIC ${PUBLIC_LIB_DEP})
-
-target_link_libraries(${MODULE_NAME} PRIVATE ${PRIVATE_LIB_DEP})
-
+create_static_lib(NAME syslink
+                    CONFIG 
+                            ENABLE_ROBOTICS_LIB
+                    CPP_FILES
+                            src/syslink.cpp
+                    INCLUDE_DIRS
+                            include
+                    PUBLIC_LIB_DEP
+                            rl_common
+                    PRIVATE_LIB_DEP
+                            uart_dma
+                            zephyr
+                            zephyr_interface
+                    )
