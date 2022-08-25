@@ -7,7 +7,7 @@ function(create_static_lib)
     # ----------------------------------------------------------
 
     set(options VERBOSE)
-    set(oneValueArgs NAME CONFIG)
+    set(oneValueArgs NAME)
     set(multiValueArgs CPP_FILES INCLUDE_DIRS PUBLIC_LIB_DEP PRIVATE_LIB_DEP)
     cmake_parse_arguments(LIB "${options}" "${oneValueArgs}"
                         "${multiValueArgs}" ${ARGN} )
@@ -18,14 +18,12 @@ function(create_static_lib)
     message("include dirs: " ${LIB_INCLUDE_DIRS})
     message("public lib deps: " ${LIB_PUBLIC_LIB_DEP})
     message("private lib deps:: " ${LIB_PRIVATE_LIB_DEP})
-    message("config: " ${LIB_CONFIG})
     endif()
 
     # ----------------------------------------------------------
     # step 2: create static library
     # ----------------------------------------------------------
 
-    if(CONFIG_${LIB_CONFIG})
 
     add_library(${LIB_NAME} STATIC ${LIB_CPP_FILES})
 
@@ -37,7 +35,6 @@ function(create_static_lib)
         message("added static lib: " ${LIB_NAME})
     endif()
 
-    endif()
 
 endfunction(create_static_lib)
 
