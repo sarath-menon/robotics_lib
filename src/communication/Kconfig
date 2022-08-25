@@ -4,3 +4,9 @@ menuconfig RL_COMMUNICATION
 	help
 	  Enables communication drivers from robotics_lib
 
+if(RL_COMMUNICATION)
+
+source "$(LIB_PATH)/src/communication/uart_dma/Kconfig"
+source "$(LIB_PATH)/src/communication/usb_console/Kconfig"
+
+endif #RL_COMMUNICATION

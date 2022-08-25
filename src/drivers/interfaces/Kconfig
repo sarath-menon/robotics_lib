@@ -1,0 +1,9 @@
+menuconfig RL_INTERFACES
+	bool "enable interface drivers"
+    default y
+	help
+	  Enables actuator drivers from robotics_lib
+
+if RL_INTERFACES
+	source "$(LIB_PATH)/src/drivers/sensors/imu/Kconfig"
+endif # RL_SENSORS

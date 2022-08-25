@@ -1,0 +1,6 @@
+menuconfig RL_COMMUNICATION_USB_CONSOLE
+	bool "enable USB console communication driver"
+    default y
+	help
+	  Enables communication drivers from robotics_lib
+

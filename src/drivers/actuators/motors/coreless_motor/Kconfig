@@ -1,0 +1,5 @@
+config RL_ACTUATORS_MOTOR_CORELESS
+	bool "enable coreless motor driver"
+    default y
+	help
+	  Enables bmi088 imu driver from robotics_lib

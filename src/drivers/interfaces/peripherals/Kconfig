@@ -1,0 +1,9 @@
+menuconfig RL_PERIPHERAL_INTERFACES
+	bool "enable peripheral interface drivers"
+    default y
+	help
+	  Enables peripheral interface drivers from robotics_lib
+
+if RL_PERIPHERAL_INTERFACES
+	source "$(LIB_PATH)/src/drivers/sensors/imu/Kconfig"
+endif # RL_SENSORS

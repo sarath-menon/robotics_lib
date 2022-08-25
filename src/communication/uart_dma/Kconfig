@@ -1,0 +1,6 @@
+menuconfig RL_COMMUNICATION_UART_DMA
+	bool "enable UART dma driver"
+    default y
+	help
+	  Enables UART dma driver from robotics_lib
+

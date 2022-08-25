@@ -1,0 +1,9 @@
+menuconfig ACTUATORS
+	bool "enable actuator drivers"
+    default y
+	help
+	  Enables actuator drivers from robotics_lib
+
+if RL_ACTUATORS_MOTORS
+	source "$(LIB_PATH)/src/drivers/actuators/motors/coreless_motor/Kconfig"
+endif # RL_SENSORS
