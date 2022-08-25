@@ -4,19 +4,20 @@ function(create_interface_lib)
     # step 1: parse cmake arguments
     # ----------------------------------------------------------
 
-    # set(options )
+    set(options VERBOSE)
     set(oneValueArgs NAME CONFIG)
     set(multiValueArgs LIBS)
     cmake_parse_arguments(LIB "${options}" "${oneValueArgs}"
                         "${multiValueArgs}" ${ARGN} )
 
+    if(${LIB_VERBOSE})
     message("name: " ${LIB_NAME})
     message("libs: " ${LIB_LIBS})
     message("config: " ${LIB_CONFIG})
-    # message("optional: " ${LIB_OPTIONAL})
+    endif()
 
     # ----------------------------------------------------------
-    # step 2: create static library
+    # step 2: create interface library
     # ----------------------------------------------------------
 
     if(CONFIG_${LIB_CONFIG})
@@ -26,7 +27,9 @@ function(create_interface_lib)
 
     foreach(LIB ${LIB_LIBS})
         add_subdirectory(${LIB})
+        if(VERBOSE)
         message("added interface sublib: " ${LIB})
+        endif()
     endforeach()
     endif()
 
