@@ -1,8 +1,8 @@
 menuconfig RL_COMMUNICATION
-	bool "Enable communication drivers"
+	bool "enable communication utilities"
     default y
 	help
-	  Enables communication drivers from robotics_lib
+	  Enables communication utilities from robotics_lib
 
 if(RL_COMMUNICATION)
 

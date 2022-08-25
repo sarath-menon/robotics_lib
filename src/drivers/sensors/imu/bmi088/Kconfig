@@ -4,25 +4,3 @@ config RL_SENSORS_IMU_BMI088
 	help
 	  Enables bmi088 imu driver from robotics_lib
 
-
-# if RL_SENSORS_IMU_BMI088
-
-# choice
-# 	prompt "select BMI088 communication interface"
-# 	default BMI088_I2C
-# 	help
-# 	  BMI088 communication interface
-
-# config BMI088_I2C
-# 	bool "i2c"
-# 	help
-# 	  enable i2c interface for bmi088
-
-# config BMI088_SPI
-# 	bool "spi"
-# 	help
-# 	  enable spi interface for bmi088
-
-# endchoice
-
-# endif #RL_SENSORS

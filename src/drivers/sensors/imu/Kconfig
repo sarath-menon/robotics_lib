@@ -1,5 +1,5 @@
 menuconfig RL_SENSORS_IMU
-	bool "enable imu sensor drivers"
+	bool "enable imu sensor driver"
     default y
 	help
 	  Enables imu sensor drivers from robotics_lib

@@ -1,6 +1,6 @@
 
 create_interface_lib(NAME actuators
-                    CONFIG RL_COMMUNICATION
+                    CONFIG RL_ACTUATORS
                     LIBS 
                         motors
                     )

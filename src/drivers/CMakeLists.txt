@@ -1,6 +1,6 @@
 
 create_interface_lib(NAME drivers
-                    CONFIG RL_COMMUNICATION
+                    CONFIG RL_DRIVERS
                     LIBS 
                         actuators
                         interfaces

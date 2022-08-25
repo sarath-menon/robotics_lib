@@ -1,5 +1,5 @@
 menuconfig RL_TESTING
-	bool "Enables unit testing"
+	bool "enables unit testing"
     default y
 	help
 	  Enables communication drivers from robotics_lib
