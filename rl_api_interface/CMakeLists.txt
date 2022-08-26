@@ -1,0 +1,5 @@
+
+
+create_interface_lib(rl_api_interface)
+
+add_interface_sublib(rl_api_interface sensor_interface)

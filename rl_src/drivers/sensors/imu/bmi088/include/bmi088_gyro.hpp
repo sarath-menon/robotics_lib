@@ -2,7 +2,7 @@
 
 #include "bmi088_defs.hpp"
 #include "i2c_dev.hpp"
-#include "imu.hpp"
+#include "imu_interface.hpp"
 #include "rl_common.hpp"
 #include <cstdint>
 #include <zephyr/device.h>

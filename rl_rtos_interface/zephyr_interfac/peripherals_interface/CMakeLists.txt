@@ -1,0 +1,6 @@
+
+create_interface_lib(peripherals_interface)
+
+add_interface_sublib(peripherals_interface gpio_dev)
+add_interface_sublib(peripherals_interface i2c_dev)
+

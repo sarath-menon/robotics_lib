@@ -1,0 +1,5 @@
+
+
+create_interface_lib(zephyr_interfac)
+
+add_interface_sublib(zephyr_interfac peripherals_interface)

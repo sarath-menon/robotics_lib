@@ -9,8 +9,7 @@ create_static_lib(NAME bmi088
                             rl_common
                     PRIVATE_LIB_DEP
                             math
-                            imu_interface
-                            i2c_dev
+                            rl_api_interface
+                            rl_rtos_interface
                             zephyr
-                            zephyr_interface
                     )

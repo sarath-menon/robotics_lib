@@ -1,0 +1,5 @@
+
+
+create_interface_lib(rl_rtos_interface)
+
+add_interface_sublib(rl_rtos_interface zephyr_interfac)
