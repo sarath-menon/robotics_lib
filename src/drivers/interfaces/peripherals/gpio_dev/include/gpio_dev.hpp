@@ -7,13 +7,13 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/zephyr.h>
 
-enum class GPIOMode { input, output };
+enum class GPIOMode { input = GPIO_INPUT, output = GPIO_OUTPUT_INACTIVE };
 
 class GPIODev {
 public:
   //------ Constructor and Destructor-----------//
 
-  GPIODev(const struct gpio_dt_spec &gpio) : gpio_{gpio} {};
+  constexpr GPIODev(const struct gpio_dt_spec &gpio) : gpio_{gpio} {};
 
   // disable default constructor and copy constructor
   GPIODev() = delete;
@@ -38,7 +38,7 @@ public:
   rl::err set_mode(const enum GPIOMode mode);
 
   // getter function
-  const auto &gpio() const { return gpio_; }
+  consteval auto &gpio() const { return gpio_; }
 
   //--------Protected members---------------------------
 
