@@ -8,7 +8,7 @@ function(create_header_only_lib)
 
     set(options VERBOSE)
     set(oneValueArgs NAME)
-    set(multiValueArgs INCLUDE_DIRS LIB_DEP)
+    set(multiValueArgs INCLUDE_DIRS DEP)
     cmake_parse_arguments(LIB "${options}" "${oneValueArgs}"
                         "${multiValueArgs}" ${ARGN} )
 
