@@ -5,5 +5,5 @@ menuconfig RL_ACTUATORS
 	  Enables actuator drivers from robotics_lib
 
 if RL_ACTUATORS
-	source "$(LIB_PATH)/src/drivers/actuators/motors/Kconfig"
+	source "$(LIB_PATH)/rl_src/drivers/actuators/motors/Kconfig"
 endif 

@@ -8,7 +8,7 @@ menuconfig ENABLE_ROBOTICS_LIB
 	  Enables robotics_lib libraty that provies several utilities for robotics
 
 if ENABLE_ROBOTICS_LIB
-	source "$(LIB_PATH)/src/communication/Kconfig"
-	source "$(LIB_PATH)/src/drivers/Kconfig"
-	source "$(LIB_PATH)/src/testing/Kconfig"
+	source "$(LIB_PATH)/rl_src/communication/Kconfig"
+	source "$(LIB_PATH)/rl_src/drivers/Kconfig"
+	source "$(LIB_PATH)/rl_src/testing/Kconfig"
 endif # ENABLE_ROBOTICS_LIB

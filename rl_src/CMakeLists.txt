@@ -1,0 +1,9 @@
+
+create_interface_lib(rl_src)
+
+add_interface_sublib_ifdef(rl_src drivers RL_DRIVERS)
+add_interface_sublib_ifdef(rl_src communication RL_COMMUNICATION)
+add_interface_sublib_ifdef(rl_src testing RL_TESTING)
+
+add_interface_sublib(rl_src math)
+add_interface_sublib(rl_src rl_common)

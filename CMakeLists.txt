@@ -6,5 +6,9 @@ set(RL_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 
 include(cmake/top.cmake)
 
-add_subdirectory(src)
+
+create_interface_lib(robotics_lib)
+
+add_interface_sublib(robotics_lib rl_src)
+
 

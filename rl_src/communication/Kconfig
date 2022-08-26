@@ -6,7 +6,7 @@ menuconfig RL_COMMUNICATION
 
 if(RL_COMMUNICATION)
 
-source "$(LIB_PATH)/src/communication/uart_dma/Kconfig"
-source "$(LIB_PATH)/src/communication/usb_console/Kconfig"
+source "$(LIB_PATH)/rl_src/communication/uart_dma/Kconfig"
+source "$(LIB_PATH)/rl_src/communication/usb_console/Kconfig"
 
 endif #RL_COMMUNICATION

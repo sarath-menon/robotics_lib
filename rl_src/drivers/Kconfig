@@ -1,0 +1,13 @@
+menuconfig RL_DRIVERS
+	bool "enable drivers"
+    default y
+	help
+	  Enables drivers from robotics_lib
+
+if(RL_DRIVERS)
+
+source "$(LIB_PATH)/rl_src/drivers/sensors/Kconfig"
+source "$(LIB_PATH)/rl_src/drivers/actuators/Kconfig"
+source "$(LIB_PATH)/rl_src/drivers/io_devices/Kconfig"
+
+endif 

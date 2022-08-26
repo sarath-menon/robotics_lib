@@ -5,5 +5,5 @@ menuconfig RL_SENSORS_IMU
 	  Enables imu sensor drivers from robotics_lib
 
 if RL_SENSORS_IMU
-	source "$(LIB_PATH)/src/drivers/sensors/imu/bmi088/Kconfig"
+	source "$(LIB_PATH)/rl_src/drivers/sensors/imu/bmi088/Kconfig"
 endif # RL_SENSORS

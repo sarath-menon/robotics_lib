@@ -5,5 +5,5 @@ menuconfig RL_PERIPHERAL_INTERFACES
 	  Enables peripheral interface drivers from robotics_lib
 
 if RL_PERIPHERAL_INTERFACES
-	source "$(LIB_PATH)/src/drivers/sensors/imu/Kconfig"
+	source "$(LIB_PATH)/rl_src/drivers/sensors/imu/Kconfig"
 endif # RL_SENSORS
