@@ -6,7 +6,7 @@
 LOG_MODULE_DECLARE(cf_app);
 
 BMI088_Gyro::BMI088_Gyro(const struct device *i2c_dev)
-    : IMU{i2c_dev, ACC_CHIP_ADDR} {
+    : IMU{i2c_dev, ACC_CHIP_ADDR}, i2c_dev{i2c_dev, ACC_CHIP_ADDR} {
   rl::err status = this->initialize();
   if (status == 0) {
     LOG_INF("mpu6050 imu gyro initialized");
@@ -20,8 +20,7 @@ rl::err BMI088_Gyro::read() {
   std::uint8_t gyro_data[6]{};
 
   // read 6 bytes: (gyro_x_,gyro_y, gyro_z)
-  std::int16_t err =
-      i2c_burst_read(i2c_dev_, GYRO_CHIP_ADDR, GYRO_DATA_START, gyro_data, 6);
+  std::int16_t err = i2c_dev.read_reg(GYRO_DATA_START, gyro_data, 6);
   if (err < 0) {
     printk("imu: Failed to read data sample");
     return -EIO;
@@ -50,7 +49,7 @@ rl::err BMI088_Gyro::initialize() {
   }
 
   // check device id
-  if (i2c_reg_read_byte(i2c_dev_, GYRO_CHIP_ADDR, GYRO_CHIP_ID, &id_) < 0) {
+  if (i2c_dev.read_reg(GYRO_CHIP_ID, &id_) < 0) {
     LOG_ERR("I2C: failed to read mpu6050 gyro chip id");
     return -EIO;
   }

@@ -67,6 +67,8 @@ private:
   // mutiplying raw gyro readings by this factor converts it to deg/s unit
   float gyro_conv_factor_{};
 
+  I2CDev i2c_dev;
+
   //------ Private Enums-----------//
 
   enum class PowerMode : std::uint8_t {
