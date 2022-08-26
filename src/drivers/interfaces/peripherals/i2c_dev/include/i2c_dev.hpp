@@ -2,6 +2,7 @@
 
 #include "rl_common.hpp"
 #include <cstdint>
+#include <cstdio>
 #include <zephyr/device.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/logging/log.h>
@@ -21,28 +22,21 @@ public:
 
   //------ Functions-----------//
 
-  // get a parameter in the imu register
-  template <typename Reg, typename Val>
-  rl::err get_parameter(const Reg param, Val &value);
+  // check if i2c device is ready
+  rl::err check_ready();
 
-  // set a parameter in the imu register
-  template <typename Reg, typename Val>
-  rl::err set_parameter(const Reg param, const Val value);
+  // read given number of bytes
+  rl::err read_reg(const uint8_t start_addr, uint8_t *buf,
+                   const uint32_t num_bytes);
 
-  // wakeup the imu from sleep mode (currently no diff btw power on and wakeup )
-  virtual rl::err wakeup() { return 0; };
+  // read one byte
+  rl::err read_reg(const uint8_t reg_addr, uint8_t *value);
 
-  // put the imu in sleep mode (currently no diff btw power off and suspend )
-  virtual rl::err suspend() { return 0; };
-
-  // initialize the device
-  virtual rl::err initialize() { return 0; };
-
-  // read accelerometer data
-  virtual rl::err read() { return 0; };
+  // write register value
+  rl::err write_reg(const uint8_t reg_addr, const uint8_t value);
 
   // getter function
-  inline auto chip_id() { return id_; }
+  inline auto chip_addr() { return chip_addr_; }
 
   //--------Private members---------------------------
 
@@ -53,18 +47,5 @@ protected:
 
   const std::uint8_t chip_addr_{};
 
-  std::uint8_t id_{};
-
-  //------ Structs-----------//
-
-  struct Status {
-    bool sleep;
-    bool power_on;
-  } status;
-
   //------ Functions-----------//
 };
-
-// template function defenitions
-#include "get_param.hpp"
-#include "set_param.hpp"

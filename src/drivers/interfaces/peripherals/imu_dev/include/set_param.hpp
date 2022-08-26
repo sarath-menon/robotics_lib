@@ -1,7 +1,7 @@
 
 
 template <typename Reg, typename Val>
-rl::err I2CDev::set_parameter(const Reg param, const Val value) {
+rl::err IMU::set_parameter(const Reg param, const Val value) {
 
   std::uint8_t reg = static_cast<std::uint8_t>(param);
   std::uint8_t val = static_cast<std::uint8_t>(value);
