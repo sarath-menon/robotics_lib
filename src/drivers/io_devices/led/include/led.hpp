@@ -1,5 +1,6 @@
 #pragma once
 
+#include "gpio_dev.hpp"
 #include "rl_common.hpp"
 #include <cstdint>
 #include <zephyr/device.h>
@@ -11,14 +12,12 @@ class Led {
 public:
   Led(const struct gpio_dt_spec &gpio);
 
-  inline auto toggle() { return gpio_pin_toggle_dt(&gpio_); }
+  rl::err toggle();
 
-  inline auto set_high() { return gpio_pin_set_dt(&gpio_, 1); }
+  rl::err set_high();
 
-  inline auto set_low() { return gpio_pin_set_dt(&gpio_, 0); }
-
-  const auto &gpio() const { return gpio_; }
+  rl::err set_low();
 
 private:
-  const struct gpio_dt_spec &gpio_{};
+  GPIODev gpio_dev;
 };

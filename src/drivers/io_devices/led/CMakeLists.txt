@@ -6,6 +6,7 @@ create_static_lib(NAME led
                             include
                     PUBLIC_LIB_DEP
                             rl_common
+                            interfaces
                     PRIVATE_LIB_DEP
                             zephyr
                             zephyr_interface
