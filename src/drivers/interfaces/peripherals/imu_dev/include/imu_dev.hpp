@@ -21,14 +21,6 @@ public:
 
   //------ Functions-----------//
 
-  // get a parameter in the imu register
-  template <typename Reg, typename Val>
-  rl::err get_parameter(const Reg param, Val &value);
-
-  // set a parameter in the imu register
-  template <typename Reg, typename Val>
-  rl::err set_parameter(const Reg param, const Val value);
-
   // wakeup the imu from sleep mode (currently no diff btw power on and wakeup )
   virtual rl::err wakeup() { return 0; };
 
@@ -64,7 +56,3 @@ protected:
 
   //------ Functions-----------//
 };
-
-// template function defenitions
-#include "get_param.hpp"
-#include "set_param.hpp"
