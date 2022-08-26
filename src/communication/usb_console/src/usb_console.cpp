@@ -9,11 +9,11 @@ UsbConsole::UsbConsole(const struct device *console) : console_{console} {
   // }
 
   /* Poll if the DTR flag was set */
-  while (!dtr) {
-    uart_line_ctrl_get(console_, UART_LINE_CTRL_DTR, &dtr);
-    /* Give CPU resources to low priority threads. */
-    k_sleep(K_MSEC(100));
-  }
+  // while (!dtr) {
+  //   uart_line_ctrl_get(console_, UART_LINE_CTRL_DTR, &dtr);
+  //   /* Give CPU resources to low priority threads. */
+  //   k_sleep(K_MSEC(100));
+  // }
 
   LOG_INF("Data terminal ready");
 
