@@ -1,6 +1,6 @@
-create_static_lib(NAME imu_dev
+create_static_lib(NAME imu_interface
                     CPP_FILES
-                            src/imu_dev.cpp
+                            src/imu.cpp
                     INCLUDE_DIRS
                             include
                     PUBLIC_LIB_DEP
