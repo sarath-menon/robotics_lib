@@ -28,10 +28,8 @@ rl::err GPIODev::set_mode(const enum GPIOMode mode) {
 
 rl::err GPIODev::check_ready() { // check if gpio is ready
 
-  rl::err ret = device_is_ready(gpio_.port);
-
-  if (ret != 0) {
-    printk("Error %d: GPIO device %s is not ready\n", ret, gpio_.port->name);
+  if (!device_is_ready(gpio_.port)) {
+    printk("Error: GPIO device %s is not ready\n", gpio_.port->name);
     return -1;
   }
   return 0;
