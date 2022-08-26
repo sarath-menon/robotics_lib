@@ -19,9 +19,6 @@ rl::err BMI088_Accel::read() {
 
   std::uint8_t accel_data[6]{};
 
-  // read 6 bytes: (acc_x_,acc_y, acc_z)
-  // std::int16_t err =
-  //     i2c_burst_read(i2c_dev_, ACC_CHIP_ADDR, ACC_DATA_START, accel_data, 6);
   rl::err ret = i2c_dev.read_reg(ACC_DATA_START, accel_data, 6);
 
   if (ret < 0) {
@@ -60,10 +57,11 @@ rl::err BMI088_Accel::initialize() {
     return -EINVAL;
   }
 
-  this->set_parameter(Reg::conf, Conf::normal_400hz);
-  this->set_parameter(Reg::range, Range::_3g);
+  i2c_dev.set_parameter(Reg::conf, Conf::normal_400hz);
+  i2c_dev.set_parameter(Reg::range, Range::_3g);
 
-  this->set_acc_conversion_factor();
+  i2c_dev.set_parameter(Reg::range, Range::_3g);
+  set_acc_conversion_factor();
 
   // suspend till after initialization to save power
   this->suspend();
@@ -75,7 +73,7 @@ rl::err BMI088_Accel::initialize() {
 rl::err BMI088_Accel::suspend() {
   rl::err err{};
 
-  this->set_parameter(Reg::power, Power::off);
+  i2c_dev.set_parameter(Reg::power, Power::off);
   status.sleep = false;
 
   k_sleep(K_MSEC(50));
@@ -86,7 +84,7 @@ rl::err BMI088_Accel::suspend() {
 rl::err BMI088_Accel::wakeup() {
   rl::err err{};
 
-  this->set_parameter(Reg::power, Power::on);
+  i2c_dev.set_parameter(Reg::power, Power::on);
   status.sleep = true;
 
   k_sleep(K_MSEC(50));
@@ -96,7 +94,7 @@ rl::err BMI088_Accel::wakeup() {
 rl::err BMI088_Accel::set_acc_conversion_factor() {
 
   Range range;
-  rl::err err = this->get_parameter(Reg::range, range);
+  rl::err err = i2c_dev.get_parameter(Reg::range, range);
 
   float g_range{};
 
