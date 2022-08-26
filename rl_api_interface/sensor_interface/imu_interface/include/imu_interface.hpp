@@ -2,17 +2,12 @@
 
 #include "rl_common.hpp"
 #include <cstdint>
-#include <zephyr/device.h>
-#include <zephyr/drivers/i2c.h>
-#include <zephyr/logging/log.h>
-#include <zephyr/zephyr.h>
 
 class IMU {
 public:
   //------ Constructor and Destructor-----------//
 
-  IMU(const struct device *i2c_dev, const std::uint8_t chip_addr)
-      : i2c_dev_{i2c_dev}, chip_addr_{chip_addr} {};
+  IMU(const std::uint8_t chip_addr) : chip_addr_{chip_addr} {};
 
   // disable default constructor and copy constructor
   IMU() = delete;
@@ -41,7 +36,7 @@ public:
 protected:
   //------ Variables--------//
 
-  const struct device *i2c_dev_{};
+  // const struct device *i2c_dev_{};
 
   const std::uint8_t chip_addr_{};
 

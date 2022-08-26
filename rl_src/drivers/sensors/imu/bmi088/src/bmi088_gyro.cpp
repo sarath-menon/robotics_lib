@@ -1,17 +1,14 @@
 #include "bmi088_gyro.hpp"
-#include "mathlib.hpp"
-#include <math.h>
-#include <zephyr/sys/byteorder.h>
 
-LOG_MODULE_DECLARE(cf_app);
+// LOG_MODULE_DECLARE(cf_app);
 
 BMI088_Gyro::BMI088_Gyro(const struct device *i2c_dev)
-    : IMU{i2c_dev, GYRO_CHIP_ADDR}, i2c_dev{i2c_dev, GYRO_CHIP_ADDR} {
+    : IMU{GYRO_CHIP_ADDR}, i2c_dev{i2c_dev, GYRO_CHIP_ADDR} {
   rl::err status = this->initialize();
   if (status == 0) {
-    LOG_INF("mpu6050 imu gyro initialized");
+    printf("mpu6050 imu gyro initialized\n");
   } else {
-    LOG_ERR("mpu6050 imu gyro could not be initialized!");
+    printf("mpu6050 imu gyro could not be initialized!\n");
   }
 }
 
@@ -42,20 +39,17 @@ rl::err BMI088_Gyro::read() {
 }
 
 rl::err BMI088_Gyro::initialize() {
-  // check if i2c is ready
-  if (!device_is_ready(i2c_dev_)) {
-    LOG_ERR("I2C: mpu6050 imu gyro is not ready");
-    return -ENODEV;
-  }
+
+  i2c_dev.check_ready();
 
   // check device id
   if (i2c_dev.read_reg(GYRO_CHIP_ID, &id_) < 0) {
-    LOG_ERR("I2C: failed to read mpu6050 gyro chip id");
+    printf("I2C: failed to read mpu6050 gyro chip id\n");
     return -EIO;
   }
 
   if (id_ != GYRO_WHO_AMI) {
-    LOG_ERR("imu: invalid gyro chip id");
+    printf("imu: invalid gyro chip id\n");
     return -EINVAL;
   }
 

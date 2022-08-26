@@ -4,11 +4,8 @@
 #include "i2c_dev.hpp"
 #include "imu_interface.hpp"
 #include "rl_common.hpp"
+#include <cmath>
 #include <cstdint>
-#include <zephyr/device.h>
-#include <zephyr/drivers/i2c.h>
-#include <zephyr/logging/log.h>
-#include <zephyr/zephyr.h>
 
 class BMI088_Gyro : public IMU {
 public:

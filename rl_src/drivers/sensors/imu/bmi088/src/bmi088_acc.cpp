@@ -1,17 +1,14 @@
 #include "bmi088_acc.hpp"
-#include "mathlib.hpp"
-#include <math.h>
-#include <zephyr/sys/byteorder.h>
 
-LOG_MODULE_DECLARE(cf_app);
+// LOG_MODULE_DECLARE(cf_app);
 
 BMI088_Accel::BMI088_Accel(const struct device *i2c_dev)
-    : IMU{i2c_dev, ACC_CHIP_ADDR}, i2c_dev{i2c_dev, ACC_CHIP_ADDR} {
+    : IMU{ACC_CHIP_ADDR}, i2c_dev{i2c_dev, ACC_CHIP_ADDR} {
   rl::err status = this->initialize();
   if (status == 0) {
-    LOG_INF("mpu6050 imu acc initialized");
+    printf("mpu6050 imu acc initialized\n");
   } else {
-    LOG_ERR("mpu6050 imu acc could not be initialized!");
+    printf("mpu6050 imu acc could not be initialized!\n");
   }
 }
 
@@ -23,7 +20,7 @@ rl::err BMI088_Accel::read() {
 
   if (ret < 0) {
     printk("imu: Failed to read data sample");
-    return -EIO;
+    return -1;
   }
 
   /* the imu sends data in big engian format (LSB first, MSB second). So,
@@ -48,13 +45,13 @@ rl::err BMI088_Accel::initialize() {
 
   // check device id
   if (i2c_dev.read_reg(ACC_CHIP_ID, &id_) < 0) {
-    LOG_ERR("I2C: failed to read mpu6050 accel chip id");
-    return -EIO;
+    printf("I2C: failed to read mpu6050 accel chip id\n");
+    return -1;
   }
 
   if (id_ != ACC_WHO_AMI) {
-    LOG_ERR("imu: invalid accel chip id");
-    return -EINVAL;
+    printf("imu: invalid accel chip id\n");
+    return -1;
   }
 
   i2c_dev.set_parameter(Reg::conf, Conf::normal_400hz);

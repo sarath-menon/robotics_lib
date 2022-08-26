@@ -3,10 +3,6 @@
 #include "gpio_dev.hpp"
 #include "rl_common.hpp"
 #include <cstdint>
-#include <zephyr/device.h>
-#include <zephyr/drivers/gpio.h>
-#include <zephyr/logging/log.h>
-#include <zephyr/zephyr.h>
 
 class Led {
 public:

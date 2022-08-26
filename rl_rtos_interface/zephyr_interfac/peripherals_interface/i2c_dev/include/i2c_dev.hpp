@@ -5,7 +5,6 @@
 #include <cstdio>
 #include <zephyr/device.h>
 #include <zephyr/drivers/i2c.h>
-#include <zephyr/logging/log.h>
 #include <zephyr/zephyr.h>
 
 class I2CDev {
