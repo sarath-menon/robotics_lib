@@ -38,6 +38,14 @@ public:
   // getter function
   inline auto chip_addr() { return chip_addr_; }
 
+  // get a parameter in the imu register
+  template <typename Reg, typename Val>
+  rl::err get_parameter(const Reg param, Val &value);
+
+  // set a parameter in the imu register
+  template <typename Reg, typename Val>
+  rl::err set_parameter(const Reg param, const Val value);
+
   //--------Private members---------------------------
 
 protected:
@@ -49,3 +57,7 @@ protected:
 
   //------ Functions-----------//
 };
+
+// template function defenitions
+#include "get_param.hpp"
+#include "set_param.hpp"
