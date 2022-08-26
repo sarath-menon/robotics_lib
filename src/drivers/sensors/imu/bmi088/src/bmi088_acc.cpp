@@ -6,7 +6,7 @@
 LOG_MODULE_DECLARE(cf_app);
 
 BMI088_Accel::BMI088_Accel(const struct device *i2c_dev)
-    : I2CDev{i2c_dev, ACC_CHIP_ADDR} {
+    : IMU{i2c_dev, ACC_CHIP_ADDR}, i2c_dev{i2c_dev, ACC_CHIP_ADDR} {
   rl::err status = this->initialize();
   if (status == 0) {
     LOG_INF("mpu6050 imu acc initialized");
@@ -20,9 +20,11 @@ rl::err BMI088_Accel::read() {
   std::uint8_t accel_data[6]{};
 
   // read 6 bytes: (acc_x_,acc_y, acc_z)
-  std::int16_t err =
-      i2c_burst_read(i2c_dev_, ACC_CHIP_ADDR, ACC_DATA_START, accel_data, 6);
-  if (err < 0) {
+  // std::int16_t err =
+  //     i2c_burst_read(i2c_dev_, ACC_CHIP_ADDR, ACC_DATA_START, accel_data, 6);
+  rl::err ret = i2c_dev.read_reg(ACC_DATA_START, accel_data, 6);
+
+  if (ret < 0) {
     printk("imu: Failed to read data sample");
     return -EIO;
   }
@@ -43,14 +45,12 @@ rl::err BMI088_Accel::read() {
 }
 
 rl::err BMI088_Accel::initialize() {
+
   // check if i2c is ready
-  if (!device_is_ready(i2c_dev_)) {
-    LOG_ERR("I2C: mpu6050 imu acc is not ready");
-    return -ENODEV;
-  }
+  i2c_dev.check_ready();
 
   // check device id
-  if (i2c_reg_read_byte(i2c_dev_, ACC_CHIP_ADDR, ACC_CHIP_ID, &id_) < 0) {
+  if (i2c_dev.read_reg(ACC_CHIP_ID, &id_) < 0) {
     LOG_ERR("I2C: failed to read mpu6050 accel chip id");
     return -EIO;
   }

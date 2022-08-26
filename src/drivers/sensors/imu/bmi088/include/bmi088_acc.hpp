@@ -2,6 +2,7 @@
 
 #include "bmi088_defs.hpp"
 #include "i2c_dev.hpp"
+#include "imu_dev.hpp"
 #include "rl_common.hpp"
 #include <cstdint>
 #include <zephyr/device.h>
@@ -9,7 +10,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/zephyr.h>
 
-class BMI088_Accel : public I2CDev {
+class BMI088_Accel : public IMU {
 public:
   //------ Constructor and Destructor-----------//
 
@@ -69,6 +70,8 @@ private:
 
   // mutiplying raw accel readings by this factor converts it to m/s^2 units
   float acc_conv_factor_{};
+
+  I2CDev i2c_dev;
 
   //------ Enums-----------//
 
