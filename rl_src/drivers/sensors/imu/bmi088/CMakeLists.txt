@@ -7,9 +7,8 @@ create_static_lib(NAME bmi088
                             include
                     PUBLIC_LIB_DEP
                             rl_common
-                    PRIVATE_LIB_DEP
-                            math
+                    PRIVATE_LIB_DEP                           
                             rl_api_interface
                             rl_rtos_interface
-                            zephyr
+
                     )
