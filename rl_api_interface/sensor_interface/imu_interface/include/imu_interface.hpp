@@ -13,6 +13,7 @@ public:
   IMU() = delete;
   IMU(const IMU &) = delete;
   IMU &operator=(const IMU &) = delete;
+  virtual ~IMU() = default;
 
   //------  Public Functions-----------//
 
