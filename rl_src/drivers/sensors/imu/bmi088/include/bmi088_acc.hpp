@@ -7,7 +7,7 @@
 #include <cmath>
 #include <cstdint>
 
-class BMI088_Accel : public IMU {
+class BMI088_Accel final : public IMU {
 public:
   //------ Constructor and Destructor-----------//
 
@@ -49,16 +49,16 @@ public:
 
   //------ Functions-----------//
   // wakeup the imu from sleep mode (currently no diff btw power on and wakeup )
-  rl::err wakeup() final;
+  rl::err wakeup() override;
 
   // put the imu in sleep mode (currently no diff btw power off and suspend )
-  rl::err suspend() final;
+  rl::err suspend() override;
 
   // initialize the device
-  rl::err initialize() final;
+  rl::err initialize() override;
 
   // read accelerometer data
-  rl::err read() final;
+  rl::err read() override;
 
   //--------Private members---------------------------
 

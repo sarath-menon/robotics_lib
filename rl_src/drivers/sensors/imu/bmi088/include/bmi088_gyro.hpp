@@ -7,7 +7,7 @@
 #include <cmath>
 #include <cstdint>
 
-class BMI088_Gyro : public IMU {
+class BMI088_Gyro final : public IMU {
 public:
   //------ Constructor and Destructor-----------//
 
@@ -47,16 +47,16 @@ public:
 
   //------ Public Functions-----------//
   // wakeup the imu from sleep mode (currently no diff btw power on and wakeup )
-  rl::err wakeup() final;
+  rl::err wakeup() override;
 
   // put the imu in sleep mode (currently no diff btw power off and suspend )
-  rl::err suspend() final;
+  rl::err suspend() override;
 
   // initialize the device
-  rl::err initialize() final;
+  rl::err initialize() override;
 
-  // read accelerometer data
-  rl::err read() final;
+  // read gyroscope data
+  rl::err read() override;
 
 private:
   //------  Private Variables--------//
