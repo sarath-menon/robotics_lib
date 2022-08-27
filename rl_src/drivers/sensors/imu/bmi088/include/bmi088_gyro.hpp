@@ -58,6 +58,8 @@ public:
   // read gyroscope data
   rl::err read() override;
 
+  rl::err check_device_exists();
+
 private:
   //------  Private Variables--------//
 

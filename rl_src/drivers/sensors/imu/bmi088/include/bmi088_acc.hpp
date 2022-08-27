@@ -60,6 +60,9 @@ public:
   // read accelerometer data
   rl::err read() override;
 
+  // getter function
+  rl::err check_device_exists();
+
   //--------Private members---------------------------
 
 private:

@@ -40,18 +40,10 @@ rl::err BMI088_Gyro::read() {
 
 rl::err BMI088_Gyro::initialize() {
 
-  i2c_dev.check_ready();
+  i2c_dev.check_bus_ready();
 
-  // check device id
-  if (i2c_dev.read_reg(GYRO_CHIP_ID, &id_) < 0) {
-    printf("I2C: failed to read mpu6050 gyro chip id\n");
-    return -EIO;
-  }
-
-  if (id_ != GYRO_WHO_AMI) {
-    printf("imu: invalid gyro chip id\n");
-    return -EINVAL;
-  }
+  // check if i2c device with given address exists
+  this->check_device_exists();
 
   i2c_dev.write_register(Reg::bandwidth, Bandwidth::odr_2000hz_bw_532hz);
   i2c_dev.write_register(Reg::range, Range::_2000dps);
@@ -119,4 +111,20 @@ rl::err BMI088_Gyro::set_gyro_conversion_factor() {
   gyro_conv_factor_ = dps / 32768.0f;
 
   return err;
+}
+
+rl::err BMI088_Gyro::check_device_exists() { // check device id
+
+  uint8_t chip_id{};
+
+  if (i2c_dev.read_reg(GYRO_CHIP_ID, &chip_id) < 0) {
+    printf("I2C: failed to read mpu6050 gyro chip id\n");
+    return -1;
+  }
+
+  if (chip_id != GYRO_WHO_AMI) {
+    printf("imu: invalid gyro chip id\n");
+    return -1;
+  }
+  return 0;
 }
