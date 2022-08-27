@@ -3,6 +3,7 @@
 #include "rl_common.hpp"
 #include <cstdint>
 #include <cstdio>
+#include <type_traits>
 #include <zephyr/device.h>
 #include <zephyr/drivers/i2c.h>
 #include <zephyr/zephyr.h>
