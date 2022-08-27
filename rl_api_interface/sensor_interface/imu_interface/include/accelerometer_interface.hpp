@@ -7,10 +7,10 @@ class Accelerometer {
 public:
   //------ Constructor and Destructor-----------//
 
-  Accelerometer(const std::uint8_t chip_addr) : chip_addr_{chip_addr} {};
+  // Accelerometer(const std::uint8_t chip_addr) : chip_addr_{chip_addr} {};
+  Accelerometer() = default;
 
-  // disable default constructor and copy constructor
-  Accelerometer() = delete;
+  // disable  copy constructor
   // virtual ~Accelerometer() = default;
   Accelerometer(const Accelerometer &) = delete;
   Accelerometer &operator=(const Accelerometer &) = delete;
@@ -38,10 +38,6 @@ protected:
   //--------Private members---------------------------
 
   //------ Variables--------//
-
-  // const struct device *i2c_dev_{};
-
-  const std::uint8_t chip_addr_{};
 
   std::uint8_t id_{};
 

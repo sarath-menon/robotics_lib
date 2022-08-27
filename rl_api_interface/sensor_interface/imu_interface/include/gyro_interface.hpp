@@ -7,11 +7,9 @@ class Gyro {
 public:
   //------ Constructor and Destructor-----------//
 
-  Gyro(const std::uint8_t chip_addr) : chip_addr_{chip_addr} {};
+  Gyro() = default;
 
-  // disable default constructor and copy constructor
-  Gyro() = delete;
-  // virtual ~Gyro() = default;
+  // disable and copy constructor
   Gyro(const Gyro &) = delete;
   Gyro &operator=(const Gyro &) = delete;
 
