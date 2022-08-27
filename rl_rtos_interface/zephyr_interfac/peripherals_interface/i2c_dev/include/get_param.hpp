@@ -1,6 +1,6 @@
 
 template <typename Reg, typename Val>
-rl::err I2CDev::get_parameter(const Reg param, Val &value) {
+rl::err I2CDev::get_parameter(const Reg registr, Val &value) {
 
   // error checking
   static_assert(std::is_enum_v<Reg> == true,
@@ -8,7 +8,7 @@ rl::err I2CDev::get_parameter(const Reg param, Val &value) {
   static_assert(std::is_enum_v<Val> == true,
                 "Parameter value  must be of type enum");
 
-  std::uint8_t reg = static_cast<std::uint8_t>(param);
+  std::uint8_t reg = static_cast<std::uint8_t>(registr);
   std::uint8_t val;
 
   // read register value
