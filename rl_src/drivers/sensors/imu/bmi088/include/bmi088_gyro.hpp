@@ -1,13 +1,13 @@
 #pragma once
 
 #include "bmi088_defs.hpp"
+#include "gyro_interface.hpp"
 #include "i2c_dev.hpp"
-#include "imu_interface.hpp"
 #include "rl_common.hpp"
 #include <cmath>
 #include <cstdint>
 
-class BMI088_Gyro final : public IMU {
+class BMI088_Gyro final : public Gyro {
 public:
   //------ Constructor and Destructor-----------//
 

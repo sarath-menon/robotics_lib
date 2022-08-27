@@ -3,7 +3,7 @@
 // LOG_MODULE_DECLARE(cf_app);
 
 BMI088_Gyro::BMI088_Gyro(const struct device *i2c_dev)
-    : IMU{GYRO_CHIP_ADDR}, i2c_dev{i2c_dev, GYRO_CHIP_ADDR} {
+    : Gyro{GYRO_CHIP_ADDR}, i2c_dev{i2c_dev, GYRO_CHIP_ADDR} {
   rl::err status = this->initialize();
   if (status == 0) {
     printf("mpu6050 imu gyro initialized\n");
