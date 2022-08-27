@@ -14,7 +14,13 @@ public:
   IMU(const IMU &) = delete;
   IMU &operator=(const IMU &) = delete;
 
-  //------ Functions-----------//
+  //------  Public Functions-----------//
+
+  // getter function
+  inline auto chip_id() { return id_; }
+
+protected:
+  //------  Protected Functions-----------//
 
   // wakeup the imu from sleep mode (currently no diff btw power on and wakeup )
   virtual rl::err wakeup() { return 0; };
@@ -28,12 +34,8 @@ public:
   // read accelerometer data
   virtual rl::err read() { return 0; };
 
-  // getter function
-  inline auto chip_id() { return id_; }
-
   //--------Private members---------------------------
 
-protected:
   //------ Variables--------//
 
   // const struct device *i2c_dev_{};
