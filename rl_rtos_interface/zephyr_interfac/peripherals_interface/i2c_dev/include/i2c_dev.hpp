@@ -23,7 +23,7 @@ public:
   //------ Functions-----------//
 
   // check if i2c device is ready
-  rl::err check_ready();
+  rl::err check_bus_ready();
 
   // read given number of bytes
   rl::err read_reg(const uint8_t start_addr, uint8_t *buf,

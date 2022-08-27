@@ -1,7 +1,7 @@
 #include "i2c_dev.hpp"
 
 // check if i2c device is ready
-rl::err I2CDev::check_ready() {
+rl::err I2CDev::check_bus_ready() {
 
   rl::err ret = device_is_ready(i2c_dev_);
   if (ret < 0) {
