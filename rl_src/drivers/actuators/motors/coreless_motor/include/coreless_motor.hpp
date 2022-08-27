@@ -12,6 +12,11 @@ namespace rl::actuators::motors {
 class Coreless {
 public:
   Coreless(const struct pwm_dt_spec &motor);
+  // disable default constructor and copy constructor
+  Coreless() = delete;
+  // virtual ~Coreless() = default;
+  Coreless(const Coreless &) = delete;
+  Coreless &operator=(const Coreless &) = delete;
 
 public:
   // test the motor

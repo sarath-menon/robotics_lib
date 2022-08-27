@@ -11,9 +11,9 @@ public:
 
   // disable default constructor and copy constructor
   IMU() = delete;
+  // virtual ~IMU() = default;
   IMU(const IMU &) = delete;
   IMU &operator=(const IMU &) = delete;
-  virtual ~IMU() = default;
 
   //------  Public Functions-----------//
 

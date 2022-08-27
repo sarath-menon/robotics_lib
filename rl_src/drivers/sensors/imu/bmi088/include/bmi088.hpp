@@ -19,6 +19,7 @@ public:
 
   // disable default constructor and copy constructor
   BMI088() = delete;
+  ~BMI088() = default;
   BMI088(const BMI088 &) = delete;
   BMI088 &operator=(const BMI088 &) = delete;
 

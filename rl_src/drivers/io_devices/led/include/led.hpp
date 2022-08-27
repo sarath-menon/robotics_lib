@@ -9,6 +9,10 @@ namespace rl::io_devices {
 class Led {
 public:
   Led(const struct gpio_dt_spec &gpio);
+  Led() = delete;
+  // virtual ~Led() = default;
+  Led(const Led &) = delete;
+  Led &operator=(const Led &) = delete;
 
   rl::err toggle();
 
