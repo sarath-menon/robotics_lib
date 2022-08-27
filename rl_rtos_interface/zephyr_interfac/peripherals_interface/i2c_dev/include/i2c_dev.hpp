@@ -40,11 +40,11 @@ public:
 
   // get a parameter in the imu register
   template <typename Reg, typename Val>
-  rl::err get_parameter(const Reg param, Val &value);
+  rl::err read_register(const Reg param, Val &value);
 
   // set a parameter in the imu register
   template <typename Reg, typename Val>
-  rl::err set_parameter(const Reg param, const Val value);
+  rl::err write_register(const Reg param, const Val value);
 
   //--------Private members---------------------------
 
@@ -59,5 +59,5 @@ protected:
 };
 
 // template function defenitions
-#include "get_param.hpp"
-#include "set_param.hpp"
+#include "read_register.hpp"
+#include "write_register.hpp"

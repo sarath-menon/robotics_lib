@@ -54,10 +54,10 @@ rl::err BMI088_Accel::initialize() {
     return -1;
   }
 
-  i2c_dev.set_parameter(Reg::conf, Conf::normal_400hz);
-  i2c_dev.set_parameter(Reg::range, Range::_3g);
+  i2c_dev.write_register(Reg::conf, Conf::normal_400hz);
+  i2c_dev.write_register(Reg::range, Range::_3g);
 
-  i2c_dev.set_parameter(Reg::range, Range::_3g);
+  i2c_dev.write_register(Reg::range, Range::_3g);
   set_acc_conversion_factor();
 
   // suspend till after initialization to save power
@@ -70,7 +70,7 @@ rl::err BMI088_Accel::initialize() {
 rl::err BMI088_Accel::suspend() {
   rl::err err{};
 
-  i2c_dev.set_parameter(Reg::power, Power::off);
+  i2c_dev.write_register(Reg::power, Power::off);
   status.sleep = false;
 
   k_sleep(K_MSEC(50));
@@ -81,7 +81,7 @@ rl::err BMI088_Accel::suspend() {
 rl::err BMI088_Accel::wakeup() {
   rl::err err{};
 
-  i2c_dev.set_parameter(Reg::power, Power::on);
+  i2c_dev.write_register(Reg::power, Power::on);
   status.sleep = true;
 
   k_sleep(K_MSEC(50));
@@ -91,7 +91,7 @@ rl::err BMI088_Accel::wakeup() {
 rl::err BMI088_Accel::set_acc_conversion_factor() {
 
   Range range;
-  rl::err err = i2c_dev.get_parameter(Reg::range, range);
+  rl::err err = i2c_dev.read_register(Reg::range, range);
 
   float g_range{};
 

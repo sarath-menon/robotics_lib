@@ -1,10 +1,10 @@
 
 template <typename Reg, typename Val>
-rl::err I2CDev::get_parameter(const Reg registr, Val &value) {
+rl::err I2CDev::read_register(const Reg registr, Val &value) {
 
-  // error checking
+  // check if Reg, Val is of type enum
   static_assert(std::is_enum_v<Reg> == true,
-                "Parameter reg must be of type enum");
+                "Parameter registr must be of type enum");
   static_assert(std::is_enum_v<Val> == true,
                 "Parameter value  must be of type enum");
 

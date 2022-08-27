@@ -53,8 +53,8 @@ rl::err BMI088_Gyro::initialize() {
     return -EINVAL;
   }
 
-  i2c_dev.set_parameter(Reg::bandwidth, Bandwidth::odr_2000hz_bw_532hz);
-  i2c_dev.set_parameter(Reg::range, Range::_2000dps);
+  i2c_dev.write_register(Reg::bandwidth, Bandwidth::odr_2000hz_bw_532hz);
+  i2c_dev.write_register(Reg::range, Range::_2000dps);
 
   this->set_gyro_conversion_factor();
 
@@ -68,7 +68,7 @@ rl::err BMI088_Gyro::initialize() {
 rl::err BMI088_Gyro::suspend() {
   rl::err err{};
 
-  i2c_dev.set_parameter(Reg::power_mode, PowerMode::suspend);
+  i2c_dev.write_register(Reg::power_mode, PowerMode::suspend);
   status.sleep = true;
 
   k_sleep(K_MSEC(50));
@@ -79,7 +79,7 @@ rl::err BMI088_Gyro::suspend() {
 rl::err BMI088_Gyro::wakeup() {
   rl::err err{};
 
-  i2c_dev.set_parameter(Reg::power_mode, PowerMode::active);
+  i2c_dev.write_register(Reg::power_mode, PowerMode::active);
   status.sleep = false;
 
   k_sleep(K_MSEC(50));
@@ -90,7 +90,7 @@ rl::err BMI088_Gyro::wakeup() {
 rl::err BMI088_Gyro::set_gyro_conversion_factor() {
 
   Range range;
-  rl::err err = i2c_dev.get_parameter(Reg::range, range);
+  rl::err err = i2c_dev.read_register(Reg::range, range);
 
   float dps{};
 
