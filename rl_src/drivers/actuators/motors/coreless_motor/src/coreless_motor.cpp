@@ -4,7 +4,7 @@ LOG_MODULE_DECLARE(cf_app);
 
 namespace rl::actuators::motors {
 
-CorelessMotor::CorelessMotor(const struct pwm_dt_spec &motor) : motor_{&motor} {
+Coreless::Coreless(const struct pwm_dt_spec &motor) : motor_{&motor} {
 
   // set motor id
   count++;
@@ -19,7 +19,7 @@ CorelessMotor::CorelessMotor(const struct pwm_dt_spec &motor) : motor_{&motor} {
   }
 }
 
-rl::err CorelessMotor::initialize() {
+rl::err Coreless::initialize() {
 
   // check if the motor is ready
   if (!device_is_ready(motor_->dev)) {
@@ -38,7 +38,7 @@ rl::err CorelessMotor::initialize() {
   return 0;
 }
 
-rl::err CorelessMotor::test() {
+rl::err Coreless::test() {
 
   // set 10% speed for checking
   rl::err ret = this->set_speed(10);
@@ -53,12 +53,12 @@ rl::err CorelessMotor::test() {
 }
 
 // switch of the motors
-rl::err CorelessMotor::switch_off() {
+rl::err Coreless::switch_off() {
   rl::err ret = this->set_speed(0.0f);
   return ret;
 }
 
-rl::err CorelessMotor::set_speed(std::uint32_t speed) {
+rl::err Coreless::set_speed(std::uint32_t speed) {
 
   // clip speed if outside bounds
   // speed = std::min(speed, 1.0f);

@@ -9,9 +9,9 @@
 
 namespace rl::actuators::motors {
 
-class CorelessMotor {
+class Coreless {
 public:
-  CorelessMotor(const struct pwm_dt_spec &motor);
+  Coreless(const struct pwm_dt_spec &motor);
 
 public:
   // test the motor
