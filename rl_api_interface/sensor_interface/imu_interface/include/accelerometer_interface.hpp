@@ -17,9 +17,6 @@ public:
 
   //------  Public Functions-----------//
 
-  // getter function
-  inline auto chip_id() { return id_; }
-
 protected:
   //------  Protected Functions-----------//
 
@@ -38,8 +35,6 @@ protected:
   //--------Private members---------------------------
 
   //------ Variables--------//
-
-  std::uint8_t id_{};
 
   //------ Structs-----------//
 

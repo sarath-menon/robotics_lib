@@ -15,9 +15,6 @@ public:
 
   //------  Public Functions-----------//
 
-  // getter function
-  inline auto chip_id() { return id_; }
-
 protected:
   //------  Protected Functions-----------//
 
@@ -38,10 +35,6 @@ protected:
   //------ Variables--------//
 
   // const struct device *i2c_dev_{};
-
-  const std::uint8_t chip_addr_{};
-
-  std::uint8_t id_{};
 
   //------ Structs-----------//
 
