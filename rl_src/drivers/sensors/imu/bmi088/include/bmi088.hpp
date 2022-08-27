@@ -9,6 +9,8 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/zephyr.h>
 
+namespace rl::sensors::imu {
+
 class BMI088 {
 public:
   //------ Constructor and Destructor-----------//
@@ -30,3 +32,5 @@ private:
 
   const struct device *i2c_dev_{};
 };
+
+} // namespace rl::sensors::imu

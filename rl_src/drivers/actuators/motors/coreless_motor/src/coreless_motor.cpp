@@ -2,6 +2,8 @@
 
 LOG_MODULE_DECLARE(cf_app);
 
+namespace rl::actuators::motors {
+
 CorelessMotor::CorelessMotor(const struct pwm_dt_spec &motor) : motor_{&motor} {
 
   // set motor id
@@ -66,3 +68,5 @@ rl::err CorelessMotor::set_speed(std::uint32_t speed) {
   rl::err ret = pwm_set_dt(motor_, period, pulse_width);
   return ret;
 }
+
+} // namespace rl::actuators::motors

@@ -7,6 +7,8 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/zephyr.h>
 
+namespace rl::actuators::motors {
+
 class CorelessMotor {
 public:
   CorelessMotor(const struct pwm_dt_spec &motor);
@@ -41,3 +43,5 @@ private:
   // period of pwm signal in milliseconds
   const std::uint32_t period = 3000;
 };
+
+} // namespace rl::actuators::motors

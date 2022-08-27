@@ -4,6 +4,8 @@
 #include "rl_common.hpp"
 #include <cstdint>
 
+namespace rl::io_devices {
+
 class Led {
 public:
   Led(const struct gpio_dt_spec &gpio);
@@ -17,3 +19,5 @@ public:
 private:
   GPIODev gpio_dev;
 };
+
+} // namespace rl::io_devices
