@@ -39,10 +39,12 @@ protected:
 
   //------ Structs-----------//
 
-  struct Status {
-    bool sleep;
-    bool power_on;
-  } status;
+  // struct Status {
+  //   bool sleep;
+  //   bool power_on;
+  // } status;
+  enum Status : std::uint8_t { Active, Suspended };
+  Status status;
 
   //------ Functions-----------//
 };

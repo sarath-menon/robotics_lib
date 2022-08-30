@@ -4,8 +4,8 @@
 
 BMI088_Accel::BMI088_Accel(struct device const *const i2c_dev)
     : i2c_dev{i2c_dev, ACC_CHIP_ADDR} {
-  rl::err status = this->initialize();
-  if (status == 0) {
+  rl::err ret = this->initialize();
+  if (ret == 0) {
     printf("mpu6050 imu acc initialized\n");
   } else {
     printf("mpu6050 imu acc could not be initialized!\n");
@@ -63,7 +63,8 @@ rl::err BMI088_Accel::suspend() {
   rl::err err{};
 
   i2c_dev.write_register(Reg::power, Power::off);
-  status.sleep = false;
+
+  status = Accelerometer::Status::Suspended;
 
   k_sleep(K_MSEC(50));
 
@@ -74,7 +75,8 @@ rl::err BMI088_Accel::wakeup() {
   rl::err err{};
 
   i2c_dev.write_register(Reg::power, Power::on);
-  status.sleep = true;
+
+  status = Accelerometer::Status::Active;
 
   k_sleep(K_MSEC(50));
   return err;

@@ -39,8 +39,6 @@ protected:
 
   //------ Variables--------//
 
-  // const struct device *i2c_dev_{};
-
   rl::register_ const chip_addr_{};
 
   std::uint8_t id_{};

@@ -4,8 +4,8 @@
 
 BMI088_Gyro::BMI088_Gyro(struct device const *const i2c_dev)
     : i2c_dev{i2c_dev, GYRO_CHIP_ADDR} {
-  rl::err status = this->initialize();
-  if (status == 0) {
+  rl::err ret = this->initialize();
+  if (ret == 0) {
     printf("mpu6050 imu gyro initialized\n");
   } else {
     printf("mpu6050 imu gyro could not be initialized!\n");
@@ -61,7 +61,8 @@ rl::err BMI088_Gyro::suspend() {
   rl::err err{};
 
   i2c_dev.write_register(Reg::power_mode, PowerMode::suspend);
-  status.sleep = true;
+
+  status = Gyro::Status::Suspended;
 
   k_sleep(K_MSEC(50));
 
@@ -72,7 +73,7 @@ rl::err BMI088_Gyro::wakeup() {
   rl::err err{};
 
   i2c_dev.write_register(Reg::power_mode, PowerMode::active);
-  status.sleep = false;
+  status = Gyro::Status::Active;
 
   k_sleep(K_MSEC(50));
 
