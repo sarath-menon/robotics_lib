@@ -4,7 +4,7 @@ LOG_MODULE_DECLARE(cf_app);
 
 namespace rl::actuators::motors {
 
-Coreless::Coreless(const struct pwm_dt_spec &motor) : motor_{&motor} {
+Coreless::Coreless(struct pwm_dt_spec const &motor) : motor_{&motor} {
 
   // set motor id
   count++;

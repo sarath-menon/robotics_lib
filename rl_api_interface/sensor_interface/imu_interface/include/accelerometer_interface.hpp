@@ -10,9 +10,9 @@ public:
   Accelerometer() = default;
 
   // disable  copy constructor
-  Accelerometer(const Accelerometer &) = delete;
+  Accelerometer(Accelerometer const &) = delete;
   // disable  copy assignment operator
-  Accelerometer &operator=(const Accelerometer &) = delete;
+  Accelerometer &operator=(Accelerometer const &) = delete;
 
   //------  Public Functions-----------//
 

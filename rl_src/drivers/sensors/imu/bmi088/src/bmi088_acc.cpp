@@ -2,7 +2,7 @@
 
 // LOG_MODULE_DECLARE(cf_app);
 
-BMI088_Accel::BMI088_Accel(const struct device *i2c_dev)
+BMI088_Accel::BMI088_Accel(struct device const *const i2c_dev)
     : i2c_dev{i2c_dev, ACC_CHIP_ADDR} {
   rl::err status = this->initialize();
   if (status == 0) {

@@ -37,7 +37,7 @@ private:
   rl::err initialize();
 
 private:
-  const struct pwm_dt_spec *motor_;
+  struct pwm_dt_spec const *motor_;
 
   // keeps track of the number of motors
   inline static std::uint8_t count{};
@@ -46,7 +46,7 @@ private:
   std::uint8_t id_{};
 
   // period of pwm signal in milliseconds
-  const std::uint32_t period = 3000;
+  std::uint32_t const period = 3000;
 };
 
 } // namespace rl::actuators::motors

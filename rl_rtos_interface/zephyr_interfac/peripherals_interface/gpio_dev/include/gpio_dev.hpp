@@ -35,17 +35,17 @@ public:
   rl::err toggle();
 
   // set gpio pin mode (input, output)
-  rl::err set_mode(const enum GPIOMode mode);
+  rl::err set_mode(enum GPIOMode const mode);
 
   // getter function
-  consteval auto &gpio() const { return gpio_; }
+  auto consteval &gpio() const { return gpio_; }
 
   //--------Protected members---------------------------
 
 protected:
   //------ Variables--------//
 
-  const struct gpio_dt_spec &gpio_{};
+  struct gpio_dt_spec const &gpio_{};
 
   //------ Structs-----------//
 

@@ -9,7 +9,7 @@
 
 class Button {
 public:
-  Button(const struct gpio_dt_spec &gpio) : gpio{gpio} {
+  Button(struct gpio_dt_spec const &gpio) : gpio{gpio} {
 
     // check whether gpio pin is ready
     if (!device_is_ready(gpio.port)) {
@@ -39,7 +39,7 @@ public:
     gpio_add_callback(gpio.port, &button_cb_data);
   }
 
-  const struct gpio_dt_spec &gpio{};
+  struct gpio_dt_spec const &gpio{};
 
 private:
   // gpio callback

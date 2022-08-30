@@ -2,7 +2,7 @@
 
 // LOG_MODULE_DECLARE(cf_app);
 
-BMI088_Gyro::BMI088_Gyro(const struct device *i2c_dev)
+BMI088_Gyro::BMI088_Gyro(struct device const *const i2c_dev)
     : i2c_dev{i2c_dev, GYRO_CHIP_ADDR} {
   rl::err status = this->initialize();
   if (status == 0) {

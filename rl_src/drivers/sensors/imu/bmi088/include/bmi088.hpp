@@ -15,7 +15,7 @@ class BMI088 {
 public:
   //------ Constructor and Destructor-----------//
 
-  explicit BMI088(struct device const *i2c_dev);
+  explicit BMI088(struct device const *const i2c_dev);
 
   //------ Deleted special member functions -----------//
 
@@ -38,7 +38,7 @@ public:
 private:
   //------ Private variables--------//
 
-  const struct device *i2c_dev_{};
+  struct device const *const i2c_dev_{};
 };
 
 } // namespace rl::sensors::imu

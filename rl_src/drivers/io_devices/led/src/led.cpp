@@ -2,7 +2,7 @@
 
 namespace rl::io_devices {
 
-Led::Led(const struct gpio_dt_spec &gpio) : gpio_dev{gpio} {
+Led::Led(struct gpio_dt_spec const &gpio) : gpio_dev{gpio} {
 
   gpio_dev.check_ready();
   gpio_dev.set_mode(GPIOMode::output);
