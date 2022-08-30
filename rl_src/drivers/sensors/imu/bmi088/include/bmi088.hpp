@@ -15,13 +15,20 @@ class BMI088 {
 public:
   //------ Constructor and Destructor-----------//
 
-  BMI088(const struct device *i2c_dev);
+  explicit BMI088(struct device const *i2c_dev);
 
-  // disable default constructor and copy constructor
+  //------ Deleted special member functions -----------//
+
+  // delete default constructor and copy constructor
   BMI088() = delete;
-  ~BMI088() = default;
+  // delete copy constructor
   BMI088(const BMI088 &) = delete;
+  // delete copy assignment operator
   BMI088 &operator=(const BMI088 &) = delete;
+  // delete move constructor
+  BMI088(BMI088 &&) = delete;
+  // delete move assignment operator
+  BMI088 &operator=(BMI088 &&) = delete;
 
   //------ Public variables--------//
 
