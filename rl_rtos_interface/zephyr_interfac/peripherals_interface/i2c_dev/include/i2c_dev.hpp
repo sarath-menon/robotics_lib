@@ -12,7 +12,7 @@ class I2CDev {
 public:
   //------ Constructor and Destructor-----------//
 
-  I2CDev(const struct device *i2c_dev, const std::uint8_t chip_addr)
+  I2CDev(const struct device *i2c_dev, const rl::register_ chip_addr)
       : i2c_dev_{i2c_dev}, chip_addr_{chip_addr} {};
 
   // disable default constructor and copy constructor
@@ -26,14 +26,14 @@ public:
   rl::err check_bus_ready();
 
   // read given number of bytes
-  rl::err read_reg(const uint8_t start_addr, uint8_t *buf,
+  rl::err read_reg(const rl::register_ reg_addr, uint8_t *buf,
                    const uint32_t num_bytes);
 
   // read one byte
-  rl::err read_reg(const uint8_t reg_addr, uint8_t *value);
+  rl::err read_reg(const rl::register_ reg_addr, uint8_t *value);
 
   // write register value
-  rl::err write_reg(const uint8_t reg_addr, const uint8_t value) const;
+  rl::err write_reg(const rl::register_ reg_addr, const uint8_t value) const;
 
   // getter function
   inline auto chip_addr() const { return chip_addr_; }
@@ -53,7 +53,7 @@ protected:
 
   const struct device *i2c_dev_{};
 
-  const std::uint8_t chip_addr_{};
+  const rl::register_ chip_addr_{};
 
   //------ Functions-----------//
 };

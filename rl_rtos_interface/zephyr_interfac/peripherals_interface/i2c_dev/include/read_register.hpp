@@ -8,7 +8,7 @@ rl::err I2CDev::read_register(const Reg registr, Val &value) {
   static_assert(std::is_enum_v<Val> == true,
                 "Parameter value  must be of type enum");
 
-  std::uint8_t reg = static_cast<std::uint8_t>(registr);
+  auto reg = static_cast<rl::register_>(registr);
   std::uint8_t val;
 
   // read register value

@@ -7,7 +7,7 @@ class IMU {
 public:
   //------ Constructor and Destructor-----------//
 
-  IMU(const std::uint8_t chip_addr) : chip_addr_{chip_addr} {};
+  IMU(const rl::register_ chip_addr) : chip_addr_{chip_addr} {};
 
   // disable default constructor and copy constructor
   IMU() = delete;
@@ -41,7 +41,7 @@ protected:
 
   // const struct device *i2c_dev_{};
 
-  const std::uint8_t chip_addr_{};
+  const rl::register_ chip_addr_{};
 
   std::uint8_t id_{};
 

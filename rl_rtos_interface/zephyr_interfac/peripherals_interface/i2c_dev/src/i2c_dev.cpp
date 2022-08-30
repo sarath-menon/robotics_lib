@@ -12,16 +12,17 @@ rl::err I2CDev::check_bus_ready() {
 }
 
 // read register value
-rl::err I2CDev::read_reg(const uint8_t start_addr, uint8_t *buf,
+rl::err I2CDev::read_reg(const rl::register_ reg_addr, uint8_t *buf,
                          const uint32_t num_bytes) {
-  return i2c_burst_read(i2c_dev_, chip_addr_, start_addr, buf, num_bytes);
+  return i2c_burst_read(i2c_dev_, chip_addr_, reg_addr, buf, num_bytes);
 };
 
-rl::err I2CDev::read_reg(const uint8_t reg_addr, uint8_t *value) {
+rl::err I2CDev::read_reg(const rl::register_ reg_addr, uint8_t *value) {
 
   return i2c_reg_read_byte(i2c_dev_, chip_addr_, reg_addr, value);
 }
 
-rl::err I2CDev::write_reg(const uint8_t reg_addr, const uint8_t value) const {
+rl::err I2CDev::write_reg(const rl::register_ reg_addr,
+                          const uint8_t value) const {
   return i2c_reg_write_byte(i2c_dev_, chip_addr_, reg_addr, value);
 }
