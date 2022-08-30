@@ -7,12 +7,11 @@ class Accelerometer {
 public:
   //------ Constructor and Destructor-----------//
 
-  // Accelerometer(const std::uint8_t chip_addr) : chip_addr_{chip_addr} {};
   Accelerometer() = default;
 
   // disable  copy constructor
-  // virtual ~Accelerometer() = default;
   Accelerometer(const Accelerometer &) = delete;
+  // disable  copy assignment operator
   Accelerometer &operator=(const Accelerometer &) = delete;
 
   //------  Public Functions-----------//

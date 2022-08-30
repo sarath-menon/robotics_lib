@@ -34,8 +34,6 @@ protected:
 
   //------ Variables--------//
 
-  // const struct device *i2c_dev_{};
-
   //------ Structs-----------//
 
   struct Status {
