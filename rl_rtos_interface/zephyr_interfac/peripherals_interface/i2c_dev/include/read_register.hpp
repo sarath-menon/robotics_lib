@@ -1,6 +1,6 @@
 
 template <typename Reg, typename Val>
-rl::err I2CDev::read_register(const Reg registr, Val &value) {
+rl::err I2CDev::read_register(const Reg registr, Val &value) const {
 
   // check if Reg, Val is of type enum
   static_assert(std::is_enum_v<Reg> == true,

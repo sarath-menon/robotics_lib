@@ -27,10 +27,10 @@ public:
 
   // read given number of bytes
   rl::err read_reg(const rl::register_ reg_addr, uint8_t *buf,
-                   const uint32_t num_bytes);
+                   const uint32_t num_bytes) const;
 
   // read one byte
-  rl::err read_reg(const rl::register_ reg_addr, uint8_t *value);
+  rl::err read_reg(const rl::register_ reg_addr, uint8_t *value) const;
 
   // write register value
   rl::err write_reg(const rl::register_ reg_addr, const uint8_t value) const;
@@ -40,7 +40,7 @@ public:
 
   // get a parameter in the imu register
   template <typename Reg, typename Val>
-  rl::err read_register(const Reg param, Val &value);
+  rl::err read_register(const Reg param, Val &value) const;
 
   // set a parameter in the imu register
   template <typename Reg, typename Val>

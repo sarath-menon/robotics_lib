@@ -13,11 +13,11 @@ rl::err I2CDev::check_bus_ready() {
 
 // read register value
 rl::err I2CDev::read_reg(const rl::register_ reg_addr, uint8_t *buf,
-                         const uint32_t num_bytes) {
+                         const uint32_t num_bytes) const {
   return i2c_burst_read(i2c_dev_, chip_addr_, reg_addr, buf, num_bytes);
 };
 
-rl::err I2CDev::read_reg(const rl::register_ reg_addr, uint8_t *value) {
+rl::err I2CDev::read_reg(const rl::register_ reg_addr, uint8_t *value) const {
 
   return i2c_reg_read_byte(i2c_dev_, chip_addr_, reg_addr, value);
 }
