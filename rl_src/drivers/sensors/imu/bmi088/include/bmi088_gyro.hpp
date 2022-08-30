@@ -63,8 +63,8 @@ public:
 private:
   //------  Private Variables--------//
 
-  // mutiplying raw gyro readings by this factor converts it to deg/s unit
-  float gyro_conv_factor_{};
+  // // mutiplying raw gyro readings by this factor converts it to deg/s unit
+  // float gyro_conv_factor_{};
 
   I2CDev i2c_dev;
 

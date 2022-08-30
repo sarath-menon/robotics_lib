@@ -34,6 +34,9 @@ protected:
 
   //------ Variables--------//
 
+  // mutiplying raw gyro readings by this factor converts it to deg/s unit
+  float gyro_conv_factor_{};
+
   //------ Structs-----------//
 
   struct Status {

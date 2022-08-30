@@ -35,6 +35,9 @@ protected:
 
   //------ Variables--------//
 
+  // mutiplying raw accel readings by this factor converts it to m/s^2 units
+  float acc_conv_factor_{};
+
   //------ Structs-----------//
 
   struct Status {

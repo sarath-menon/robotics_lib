@@ -68,8 +68,8 @@ public:
 private:
   //------ Variables--------//
 
-  // mutiplying raw accel readings by this factor converts it to m/s^2 units
-  float acc_conv_factor_{};
+  // // mutiplying raw accel readings by this factor converts it to m/s^2 units
+  // float acc_conv_factor_{};
 
   I2CDev i2c_dev;
 
