@@ -22,6 +22,6 @@ rl::err I2CDev::read_reg(const uint8_t reg_addr, uint8_t *value) {
   return i2c_reg_read_byte(i2c_dev_, chip_addr_, reg_addr, value);
 }
 
-rl::err I2CDev::write_reg(const uint8_t reg_addr, const uint8_t value) {
+rl::err I2CDev::write_reg(const uint8_t reg_addr, const uint8_t value) const {
   return i2c_reg_write_byte(i2c_dev_, chip_addr_, reg_addr, value);
 }

@@ -33,10 +33,10 @@ public:
   rl::err read_reg(const uint8_t reg_addr, uint8_t *value);
 
   // write register value
-  rl::err write_reg(const uint8_t reg_addr, const uint8_t value);
+  rl::err write_reg(const uint8_t reg_addr, const uint8_t value) const;
 
   // getter function
-  inline auto chip_addr() { return chip_addr_; }
+  inline auto chip_addr() const { return chip_addr_; }
 
   // get a parameter in the imu register
   template <typename Reg, typename Val>
@@ -44,7 +44,7 @@ public:
 
   // set a parameter in the imu register
   template <typename Reg, typename Val>
-  rl::err write_register(const Reg param, const Val value);
+  rl::err write_register(const Reg param, const Val value) const;
 
   //--------Private members---------------------------
 
