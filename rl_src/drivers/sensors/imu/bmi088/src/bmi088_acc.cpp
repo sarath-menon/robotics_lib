@@ -113,10 +113,10 @@ rl::err BMI088_Accel::set_acc_conversion_factor() {
 
 rl::err BMI088_Accel::check_device_exists() { // check device id
 
-  uint8_t chip_id{};
+  rl::register_ chip_id{};
 
   if (i2c_dev.read_reg(ACC_CHIP_ID, &chip_id) < 0) {
-    printf("I2C: failed to read mpu6050 accel chip id\n");
+    printf("BMI088: failed to read mpu6050 accel chip id\n");
     return -1;
   }
 
