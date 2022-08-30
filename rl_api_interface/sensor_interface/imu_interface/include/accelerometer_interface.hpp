@@ -3,11 +3,14 @@
 #include "rl_common.hpp"
 #include <cstdint>
 
+enum class BusType : std::uint8_t { i2c, spi };
+
 class Accelerometer {
 public:
   //------ Constructor and Destructor-----------//
 
   Accelerometer() = default;
+  Accelerometer(enum BusType bus_type) : bus_type{bus_type} {}
 
   // disable  copy constructor
   Accelerometer(Accelerometer const &) = delete;
@@ -31,17 +34,17 @@ protected:
   // read accelerometer data
   virtual rl::err read() { return 0; };
 
-  //--------Private members---------------------------
+  //-------- Private Enums ---------------------------
 
-  //------ Variables--------//
+  enum Status : std::uint8_t { Active, Suspended };
+
+  //-------- Protected  Variables ---------------------------
 
   // mutiplying raw accel readings by this factor converts it to m/s^2 units
   float acc_conv_factor_{};
 
-  //------ Structs-----------//
-
-  enum Status : std::uint8_t { Active, Suspended };
-  Status status;
+  BusType bus_type{};
+  Status status{};
 
   //------ Functions-----------//
 };

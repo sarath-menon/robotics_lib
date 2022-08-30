@@ -3,13 +3,34 @@
 // LOG_MODULE_DECLARE(cf_app);
 
 BMI088_Accel::BMI088_Accel(struct device const *const i2c_dev)
-    : i2c_dev{i2c_dev, ACC_CHIP_ADDR} {
+    : i2c_dev{i2c_dev, ACC_CHIP_ADDR}, Accelerometer{BusType::i2c} {
   rl::err ret = this->initialize();
   if (ret == 0) {
     printf("mpu6050 imu acc initialized\n");
   } else {
     printf("mpu6050 imu acc could not be initialized!\n");
   }
+}
+
+rl::err BMI088_Accel::initialize() {
+
+  // check if i2c bus is ready
+  i2c_dev.check_bus_ready();
+
+  // check if i2c device with given address exists
+  this->check_device_exists();
+
+  i2c_dev.write_register(Reg::conf, Conf::normal_400hz);
+  i2c_dev.write_register(Reg::range, Range::_3g);
+  i2c_dev.write_register(Reg::range, Range::_3g);
+
+  set_acc_conversion_factor();
+
+  // suspend till after initialization to save power
+  this->suspend();
+
+  // return zero if initialization successful
+  return 0;
 }
 
 rl::err BMI088_Accel::read() {
@@ -35,27 +56,6 @@ rl::err BMI088_Accel::read() {
 
   printk("accel: %.4f %.4f %.4f\n", accel_xf, accel_yf, accel_zf);
 
-  return 0;
-}
-
-rl::err BMI088_Accel::initialize() {
-
-  // check if i2c bus is ready
-  i2c_dev.check_bus_ready();
-
-  // check if i2c device with given address exists
-  this->check_device_exists();
-
-  i2c_dev.write_register(Reg::conf, Conf::normal_400hz);
-  i2c_dev.write_register(Reg::range, Range::_3g);
-
-  i2c_dev.write_register(Reg::range, Range::_3g);
-  set_acc_conversion_factor();
-
-  // suspend till after initialization to save power
-  this->suspend();
-
-  // return zero if initialization successful
   return 0;
 }
 
