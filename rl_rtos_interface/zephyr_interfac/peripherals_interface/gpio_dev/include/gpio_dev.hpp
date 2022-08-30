@@ -13,12 +13,12 @@ class GPIODev {
 public:
   //------ Constructor and Destructor-----------//
 
-  constexpr GPIODev(const struct gpio_dt_spec &gpio) : gpio_{gpio} {};
+  constexpr GPIODev(struct gpio_dt_spec const &gpio) : gpio_{gpio} {};
 
   // disable default constructor and copy constructor
   GPIODev() = delete;
-  GPIODev(const GPIODev &) = delete;
-  GPIODev &operator=(const GPIODev &) = delete;
+  GPIODev(GPIODev const &) = delete;
+  GPIODev &operator=(GPIODev const &) = delete;
 
   //------ Functions-----------//
 

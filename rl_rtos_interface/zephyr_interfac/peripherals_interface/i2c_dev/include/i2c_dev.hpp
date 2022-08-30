@@ -12,13 +12,13 @@ class I2CDev {
 public:
   //------ Constructor and Destructor-----------//
 
-  I2CDev(const struct device *i2c_dev, const rl::register_ chip_addr)
+  I2CDev(struct device const *i2c_dev, rl::register_ const chip_addr)
       : i2c_dev_{i2c_dev}, chip_addr_{chip_addr} {};
 
   // disable default constructor and copy constructor
   I2CDev() = delete;
-  I2CDev(const I2CDev &) = delete;
-  I2CDev &operator=(const I2CDev &) = delete;
+  I2CDev(I2CDev const &) = delete;
+  I2CDev &operator=(I2CDev const &) = delete;
 
   //------ Functions-----------//
 

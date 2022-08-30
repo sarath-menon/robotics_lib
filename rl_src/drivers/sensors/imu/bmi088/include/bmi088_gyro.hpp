@@ -11,12 +11,12 @@ class BMI088_Gyro final : public Gyro {
 public:
   //------ Constructor and Destructor-----------//
 
-  BMI088_Gyro(const struct device *i2c_dev);
+  BMI088_Gyro(struct device const *i2c_dev);
 
   // disable  copy constructor
   BMI088_Gyro() = delete;
-  BMI088_Gyro(const BMI088_Gyro &) = delete;
-  BMI088_Gyro &operator=(const BMI088_Gyro &) = delete;
+  BMI088_Gyro(BMI088_Gyro const &) = delete;
+  BMI088_Gyro &operator=(BMI088_Gyro const &) = delete;
 
   //------ Public Enums-----------//
 

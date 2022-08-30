@@ -7,13 +7,13 @@ class IMU {
 public:
   //------ Constructor and Destructor-----------//
 
-  IMU(const rl::register_ chip_addr) : chip_addr_{chip_addr} {};
+  IMU(rl::register_ const chip_addr) : chip_addr_{chip_addr} {};
 
   // disable default constructor and copy constructor
   IMU() = delete;
   // virtual ~IMU() = default;
-  IMU(const IMU &) = delete;
-  IMU &operator=(const IMU &) = delete;
+  IMU(IMU const &) = delete;
+  IMU &operator=(IMU const &) = delete;
 
   //------  Public Functions-----------//
 

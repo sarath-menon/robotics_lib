@@ -12,7 +12,7 @@ public:
   Led() = delete;
   // virtual ~Led() = default;
   Led(const Led &) = delete;
-  Led &operator=(const Led &) = delete;
+  Led &operator=(Led const &) = delete;
 
   rl::err toggle();
 

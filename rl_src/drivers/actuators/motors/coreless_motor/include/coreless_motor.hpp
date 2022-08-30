@@ -15,8 +15,8 @@ public:
   // disable default constructor and copy constructor
   Coreless() = delete;
   // virtual ~Coreless() = default;
-  Coreless(const Coreless &) = delete;
-  Coreless &operator=(const Coreless &) = delete;
+  Coreless(Coreless const &) = delete;
+  Coreless &operator=(Coreless const &) = delete;
 
 public:
   // test the motor

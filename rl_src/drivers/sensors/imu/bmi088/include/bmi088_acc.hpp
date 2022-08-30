@@ -11,12 +11,12 @@ class BMI088_Accel final : public Accelerometer {
 public:
   //------ Constructor and Destructor-----------//
 
-  BMI088_Accel(const struct device *i2c_dev);
+  BMI088_Accel(struct device const *i2c_dev);
 
   // disable default constructor and copy constructor
   BMI088_Accel() = delete;
-  BMI088_Accel(const BMI088_Accel &) = delete;
-  BMI088_Accel &operator=(const BMI088_Accel &) = delete;
+  BMI088_Accel(BMI088_Accel const &) = delete;
+  BMI088_Accel &operator=(BMI088_Accel const &) = delete;
 
   //------ Enums-----------//
 

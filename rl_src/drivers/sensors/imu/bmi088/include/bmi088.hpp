@@ -22,9 +22,9 @@ public:
   // delete default constructor and copy constructor
   BMI088() = delete;
   // delete copy constructor
-  BMI088(const BMI088 &) = delete;
+  BMI088(BMI088 const &) = delete;
   // delete copy assignment operator
-  BMI088 &operator=(const BMI088 &) = delete;
+  BMI088 &operator=(BMI088 const &) = delete;
   // delete move constructor
   BMI088(BMI088 &&) = delete;
   // delete move assignment operator

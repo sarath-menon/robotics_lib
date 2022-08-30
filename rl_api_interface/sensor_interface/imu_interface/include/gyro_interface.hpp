@@ -10,8 +10,8 @@ public:
   Gyro() = default;
 
   // disable and copy constructor
-  Gyro(const Gyro &) = delete;
-  Gyro &operator=(const Gyro &) = delete;
+  Gyro(Gyro const &) = delete;
+  Gyro &operator=(Gyro const &) = delete;
 
   //------  Public Functions-----------//
 
