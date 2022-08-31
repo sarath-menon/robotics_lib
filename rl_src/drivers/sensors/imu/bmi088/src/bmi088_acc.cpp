@@ -37,7 +37,7 @@ rl::err BMI088_Accel::read() {
 
   std::uint8_t accel_data[6]{};
 
-  rl::err ret = i2c_dev.read_reg(ACC_DATA_START, accel_data, 6);
+  rl::err ret = i2c_dev.read_register(ACC_DATA_START, accel_data, 6);
 
   if (ret < 0) {
     printk("imu: Failed to read data sample");
@@ -117,7 +117,7 @@ rl::err BMI088_Accel::check_device_exists() { // check device id
 
   rl::register_ chip_id{};
 
-  if (i2c_dev.read_reg(ACC_CHIP_ID, &chip_id) < 0) {
+  if (i2c_dev.read_register(ACC_CHIP_ID, &chip_id) < 0) {
     printf("BMI088: failed to read mpu6050 accel chip id\n");
     return -1;
   }

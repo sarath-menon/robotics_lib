@@ -17,7 +17,7 @@ rl::err BMI088_Gyro::read() {
   std::uint8_t gyro_data[6]{};
 
   // read 6 bytes: (gyro_x_,gyro_y, gyro_z)
-  std::int16_t err = i2c_dev.read_reg(GYRO_DATA_START, gyro_data, 6);
+  std::int16_t err = i2c_dev.read_register(GYRO_DATA_START, gyro_data, 6);
   if (err < 0) {
     printk("imu: Failed to read data sample");
     return -EIO;
@@ -118,7 +118,7 @@ rl::err BMI088_Gyro::check_device_exists() { // check device id
 
   uint8_t chip_id{};
 
-  if (i2c_dev.read_reg(GYRO_CHIP_ID, &chip_id) < 0) {
+  if (i2c_dev.read_register(GYRO_CHIP_ID, &chip_id) < 0) {
     printf("I2C: failed to read mpu6050 gyro chip id\n");
     return -1;
   }
