@@ -1,6 +1,5 @@
 #pragma once
 #include <cstdint>
-
 namespace rl {
 
 // error code
