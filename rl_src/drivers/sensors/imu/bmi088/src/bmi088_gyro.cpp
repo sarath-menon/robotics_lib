@@ -62,7 +62,7 @@ rl::err BMI088_Gyro::suspend() {
 
   i2c_dev.write_register(Reg::power_mode, PowerMode::suspend);
 
-  status = Gyro::Status::Suspended;
+  status = Gyro::Status::sleeping;
 
   k_sleep(K_MSEC(50));
 
@@ -73,7 +73,7 @@ rl::err BMI088_Gyro::wakeup() {
   rl::err err{};
 
   i2c_dev.write_register(Reg::power_mode, PowerMode::active);
-  status = Gyro::Status::Active;
+  status = Gyro::Status::active;
 
   k_sleep(K_MSEC(50));
 

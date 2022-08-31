@@ -64,7 +64,7 @@ rl::err BMI088_Accel::suspend() {
 
   i2c_dev.write_register(Reg::power, Power::off);
 
-  status = Accelerometer::Status::Suspended;
+  status = Accelerometer::Status::sleeping;
 
   k_sleep(K_MSEC(50));
 
@@ -76,7 +76,7 @@ rl::err BMI088_Accel::wakeup() {
 
   i2c_dev.write_register(Reg::power, Power::on);
 
-  status = Accelerometer::Status::Active;
+  status = Accelerometer::Status::active;
 
   k_sleep(K_MSEC(50));
   return err;
