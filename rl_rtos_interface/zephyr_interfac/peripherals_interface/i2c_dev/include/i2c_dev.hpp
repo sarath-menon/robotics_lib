@@ -26,14 +26,15 @@ public:
   rl::err check_bus_ready();
 
   // read given number of bytes
-  rl::err read_reg(const rl::register_ reg_addr, uint8_t *buf,
-                   const uint32_t num_bytes) const;
+  rl::err read_register(const rl::register_ reg_addr, uint8_t *buf,
+                        const uint32_t num_bytes) const;
 
   // read one byte
-  rl::err read_reg(const rl::register_ reg_addr, uint8_t *value) const;
+  rl::err read_register(const rl::register_ reg_addr, uint8_t *value) const;
 
   // write register value
-  rl::err write_reg(const rl::register_ reg_addr, const uint8_t value) const;
+  rl::err write_register(const rl::register_ reg_addr,
+                         const uint8_t value) const;
 
   // getter function
   inline auto chip_addr() const { return chip_addr_; }
