@@ -36,7 +36,7 @@ protected:
 
   //-------- Private Enums ---------------------------
 
-  enum Status : std::uint8_t { Active, Suspended };
+  enum Status : std::uint8_t { active, sleeping };
 
   //-------- Protected  Variables ---------------------------
 

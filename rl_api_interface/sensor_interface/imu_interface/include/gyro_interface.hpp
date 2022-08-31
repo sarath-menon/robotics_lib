@@ -43,7 +43,7 @@ protected:
   //   bool sleep;
   //   bool power_on;
   // } status;
-  enum Status : std::uint8_t { Active, Suspended };
+  enum Status : std::uint8_t { active, sleeping };
   Status status;
 
   //------ Functions-----------//
